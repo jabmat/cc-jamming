@@ -2,7 +2,7 @@ const Playlist = () => {
     return (
         <>
             <div>
-                <p>Playlist</p>
+                <h3>Playlist</h3>
             </div>
         </>
     )
