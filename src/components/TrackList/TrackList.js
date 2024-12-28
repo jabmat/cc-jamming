@@ -1,22 +1,29 @@
 import React from 'react';
 import Track from '../Track/Track';
 
-const Tracklist = ({ tracks }) => {
+const Tracklist = ({ tracks, onAdd, onRemove, canRemove }) => {
 	return (
 		<>
 			<div className="track-list">
-				<h3>Tracklist</h3>
-				<div className="track-list">
-					{tracks.map((track) => {
-						const trackNumber = tracks.indexOf(track);
-						return <Track track={track} trackNumber={trackNumber} key={track.id} />;
-					})}
+				{tracks.map((track) => {
+					// const trackNumber = tracks.indexOf(track);
+					return (
+						<>
+							<Track
+								track={track}
+								/*trackNumber={trackNumber}*/ key={track.id}
+								onAdd={onAdd}
+								onRemove={onRemove}
+								canRemove={canRemove}
+							/>
+						</>
+					);
+				})}
 
-					{/* <ul>
+				{/* <ul>
 						<li>track-1:</li>
 						<li>track-2:</li>
 					</ul> */}
-				</div>
 			</div>
 		</>
 	);
