@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import React from 'react';
 import Tracklist from '../TrackList/TrackList';
 import Playlist from '../Playlist/Playlist';
 
 const SearchResults = ({ searchResults, onAdd }) => {
 	return (
 		<>
-			<div>
+			<div className="search-results">
 				<h2>Search Results</h2>
-				<h3>Tracklist</h3>
+				<h3>Tracks:</h3>
 				<Tracklist tracks={searchResults} onAdd={onAdd} />
 			</div>
 		</>
