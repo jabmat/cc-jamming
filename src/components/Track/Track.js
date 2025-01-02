@@ -1,13 +1,19 @@
 import React, { useCallback } from 'react';
 
 const Track = ({ track, trackNumber, key, onAdd, onRemove, canRemove }) => {
-	const addTrackIn = useCallback(() => {
-		onAdd(track);
-	}, [onAdd, track]);
+	const addTrackIn = useCallback(
+		(event) => {
+			onAdd(track);
+		},
+		[onAdd, track]
+	);
 
-	const removeTrackIn = useCallback(() => {
-		onRemove(track);
-	}, [onRemove, track]);
+	const removeTrackIn = useCallback(
+		(event) => {
+			onRemove(track);
+		},
+		[onRemove, track]
+	);
 
 	const renderActionButton = () => {
 		if (canRemove) {
@@ -35,6 +41,7 @@ const Track = ({ track, trackNumber, key, onAdd, onRemove, canRemove }) => {
 						<li>name: {track.name} </li>
 						<li>artist: {track.artist} </li>
 						<li>album: {track.album} </li>
+						<li>uri: {track.uri}</li>
 					</ul>
 				</div>
 				{renderActionButton()}
