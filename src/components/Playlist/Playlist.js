@@ -6,6 +6,7 @@ const Playlist = ({
 	namePlaylist,
 	onRemove,
 	onChangePlaylistName,
+	onSave,
 }) => {
 	const handleChangePlaylistName = useCallback(
 		(event) => {
@@ -13,6 +14,7 @@ const Playlist = ({
 		},
 		[onChangePlaylistName]
 	);
+
 	return (
 		<>
 			<div className="playlist">
@@ -32,7 +34,7 @@ const Playlist = ({
 					canRemove={true}
 					onRemove={onRemove}
 				/>
-				<button className="playlist-save-button">
+				<button className="playlist-save-button" onClick={onSave}>
 					save '{namePlaylist}' playlist to your spotify account
 				</button>
 			</div>

@@ -106,6 +106,56 @@ const Spotify = {
 	// 			}));
 	// 		});
 	// },
+
+	async savePlaylist(name, trackUris) {
+		const accessToken = this.getAccessToken();
+		const headers = { Authorization: `Bearer ${accessToken}` };
+		let userId;
+		try {
+			const isId = await fetch('https://api.spotify.com/v1/me', {
+				headers: headers,
+			});
+			if (isId.ok) {
+				const jsonIsId = await isId.json();
+				userId = jsonIsId.id;
+				console.log(userId);
+				const isPlaylist = await fetch(
+					`https://api.spotify.com/v1/users/${userId}/playlists`,
+					{
+						headers: headers,
+						method: 'POST',
+						body: JSON.stringify({ name: name }),
+					}
+				);
+				const jsonIsPlaylist = await isPlaylist.json();
+				const playlistId = jsonIsPlaylist.id;
+				await fetch(
+					`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
+					{
+						headers: headers,
+						method: 'POST',
+						body: JSON.stringify({ uris: trackUris }),
+					}
+				);
+			} else {
+				throw new Error('Request user ID failed!');
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	},
+	// async savePlaylist() {
+	// 	try {
+	// 		const response = await fetch('', {});
+	// 		if (response.ok) {
+	// 			const jsonResponse = response.json();
+	// 			//
+	// 		}
+	// 		throw Error('Request failed!');
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// },
 };
 
 export default Spotify;

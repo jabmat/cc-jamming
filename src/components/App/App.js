@@ -27,24 +27,6 @@ const App = () => {
 	const [namePlaylist, setNamePlaylist] = useState('(name your playlist)');
 	const [tracksPlaylist, setTracksPlaylist] = useState([]);
 
-	// const newSearchResults = [
-	// 	{
-	// 		name: 'odezwa2',
-	// 		artist: 'into dark',
-	// 		album: 'i, glance',
-	// 		id: '16',
-	// 	},
-	// 	{
-	// 		name: 'serce krwawe2',
-	// 		artist: 'runopatia',
-	// 		album: 'archaistia',
-	// 		id: '17',
-	// 	},
-	// ];
-	// test
-	// Spotify.getAccessTokenIG();
-
-	// TO DO - naprawić to gówno
 	const updateSearchResults = useCallback((query) => {
 		// const searchResults = Spotify.search(query);
 		// console.log(searchResults);
@@ -86,9 +68,13 @@ const App = () => {
 	}, []);
 
 	// TO DO - save playlist to spotify feature
-	// const savePlaylist = useCallback(() => {
-	// 	const playlistTracksUris = tracksPlaylist.map((track) => track.uri);
-	// }, []);
+	const savePlaylist = useCallback(() => {
+		const playlistTracksUris = tracksPlaylist.map((track) => track.uri);
+		Spotify.savePlaylist(namePlaylist, playlistTracksUris).then(() => {
+			setNamePlaylist('Name your new playlist');
+			setTracksPlaylist([]);
+		});
+	}, [namePlaylist, tracksPlaylist]);
 
 	return (
 		<div className="App">
@@ -101,7 +87,7 @@ const App = () => {
 				namePlaylist={namePlaylist}
 				onChangePlaylistName={changePlaylistName}
 				onRemove={removeTrackFromPlaylist}
-				/*onSave={savePlaylist}*/
+				onSave={savePlaylist}
 			/>
 		</div>
 	);
