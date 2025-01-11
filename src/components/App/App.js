@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -26,20 +26,26 @@ const App = () => {
 	const [searchResults, setSearchResults] = useState([]);
 	const [namePlaylist, setNamePlaylist] = useState('(name your playlist)');
 	const [tracksPlaylist, setTracksPlaylist] = useState([]);
+	const [logged, setLogged] = useState(false);
+	const [userName, setUserName] = useState('');
+
+	useEffect(() => {
+		const authenticated = Spotify.checkAuth();
+		if (authenticated) {
+			setLogged(authenticated);
+			Spotify.getUserName().then(setUserName);
+		} else {
+			console.log(`Sorry, couldn't log you in!!`);
+		}
+	}, []);
+
+	const logInHandler = useCallback(() => {
+		Spotify.getAuth();
+		// setLogged(true);
+	}, [logged]);
 
 	const updateSearchResults = useCallback((query) => {
-		// const searchResults = Spotify.search(query);
-		// console.log(searchResults);
-		// setSearchResults(searchResults);
-
-		// .then
 		Spotify.search(query).then(setSearchResults);
-
-		// weird
-		// console.log(searchResults);
-		// Spotify.search(query).then((results) => {
-		// 	searchResults(results);
-		// });
 	}, []);
 	// // to do - handle change results
 	// const handleUpdateSearchResults = () => {};
@@ -75,6 +81,35 @@ const App = () => {
 			setTracksPlaylist([]);
 		});
 	}, [namePlaylist, tracksPlaylist]);
+
+	// log in logic?
+	if (!logged) {
+		return (
+			<div className="log-wrapper">
+				<button onClick={logInHandler}>Log in to Spotify</button>
+			</div>
+		);
+	} else {
+		return (
+			<div className="App">
+				{/* <header className="App-header">
+      </header> */}
+				<h1>Howdy {userName}!</h1>
+				<SearchBar updateSearchResults={updateSearchResults} />
+				<SearchResults
+					searchResults={searchResults}
+					onAdd={addTrackToPlaylist}
+				/>
+				<Playlist
+					tracksPlaylist={tracksPlaylist}
+					namePlaylist={namePlaylist}
+					onChangePlaylistName={changePlaylistName}
+					onRemove={removeTrackFromPlaylist}
+					onSave={savePlaylist}
+				/>
+			</div>
+		);
+	}
 
 	return (
 		<div className="App">

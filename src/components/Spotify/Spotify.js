@@ -6,6 +6,41 @@ let accessToken;
 // import { stringToBase64 } from 'uint8array-extras';
 
 const Spotify = {
+	// logic after pressing 'log in' button (redirecting user to spotify login page & then to redirect_uri)
+	getAuth() {
+		const tokenURL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+		window.location = tokenURL;
+	},
+
+	// checking URL on page load
+	checkAuth() {
+		const authenticated = window.location.href.match(/access_token=([^&]*)/);
+		if (authenticated) {
+			accessToken = authenticated[1];
+			return true;
+		} else {
+			return false;
+		}
+	},
+	async getUserName() {
+		try {
+			const response = await fetch('https://api.spotify.com/v1/me', {
+				method: 'GET',
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			});
+			if (response.ok) {
+				const jsonResponse = await response.json();
+				const userName = jsonResponse.display_name;
+				return userName;
+			} else {
+				throw new Error(`Couldn't fetch user name!`);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	},
 	// to do - GET for access token
 	getAccessToken() {
 		if (accessToken) {
