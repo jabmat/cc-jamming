@@ -1,0 +1,135 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+.app {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Roboto Flex', serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16px;
+}
+
+.greetings {
+	font-family: 'Indie Flower', serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 1.5em;
+	letter-spacing: 0.04em;
+	word-spacing: 0.1em;
+}
+
+/* .indie-flower-regular {
+	font-family: 'Indie Flower', serif;
+	font-weight: 400;
+	font-style: normal;
+} */
+
+/* <uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 100 to 1000
+
+.roboto-flex-<uniquifier > {
+	font-family: 'Roboto Flex', serif;
+	font-optical-sizing: auto;
+	font-weight: <weight>;
+	font-style: normal;
+	font-variation-settings: 'slnt' 0, 'wdth' 100, 'GRAD' 0, 'XOPQ' 96, 'XTRA' 468,
+		'YOPQ' 79, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738, 'YTLC' 514, 'YTUC' 712;
+} */
+
+header,
+main {
+	/* text-align: center; */
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 1100px;
+	align-items: center;
+}
+
+h1,
+h2 {
+	margin: 20px 0;
+}
+
+input {
+	/* padding: 5px; */
+}
+
+button {
+	/* display: flex; */
+	/* width: auto;
+	height: 40px;
+	background-color: #0860c4;
+	color: #fff;
+	border: 0;
+	border-radius: 20px;
+	padding: 0 20px;
+	gap: 8px; */
+}
+
+main {
+	/* display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px; */
+}
+
+.logWrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.resultsWrapper {
+	display: flex;
+	width: 100%;
+	margin: 30px 0px;
+	gap: 15px;
+}
+
+.results,
+.playlist {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* border: 1px solid #d3d3d3; */
+	border-radius: 7px;
+	box-shadow: 7px 5px 12px #d3d3d3;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
+	max-width: 1100px;
+	width: 100%;
+}
+
+.creditsWrapper {
+	margin: 20px 0;
+}
+
+@media (max-width: 1100px) {
+	header,
+	main {
+		/* margin: 0px 10px; */
+	}
+
+	.resultsWrapper {
+		flex-direction: column;
+	}
+
+	.results,
+	.playlist {
+		margin: 0px 20px;
+	}
+}

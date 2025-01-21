@@ -1,0 +1,66 @@
+.track {
+	/* border: 1px solid black; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* background: #d3d3d3; */
+	border-bottom: 1px solid #d3d3d3;
+	/* gap: 5px; */
+}
+
+.track:last-of-type {
+	border-bottom: none;
+}
+
+.trackInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-right: 10px;
+}
+
+.trackName {
+	font-weight: 500;
+}
+
+.trackArtist,
+.trackAlbum {
+	font-size: 14px;
+}
+
+.trackYear {
+	font-size: 12px;
+}
+
+.trackDetails {
+	display: flex;
+	gap: 5px;
+}
+
+.trackDetails span {
+	border-right: 1px solid black;
+	padding-right: 5px;
+}
+
+.trackDetails span:last-child {
+	border: none;
+	padding: 0;
+}
+
+.actionButton {
+	height: 25px;
+    width: 25px;
+}
+
+@media (max-width: 1000px) {
+	.track {
+		/* flex-direction: column; */
+		padding-bottom: 5px;
+	}
+
+	.trackInfo {
+		/* align-items: center; */
+		/* margin-right: 0px; */
+		/* margin-bottom: 10px; */
+	}
+}

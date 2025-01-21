@@ -109,7 +109,8 @@ const Spotify = {
 					name: track.name,
 					artist: track.artists[0].name,
 					album: track.album.name,
-					uri: track.uri,
+                    uri: track.uri,
+                    year: track.album.release_date,
 				}));
 			}
 			throw new Error('Request failed!');
@@ -153,7 +154,7 @@ const Spotify = {
 			if (isId.ok) {
 				const jsonIsId = await isId.json();
 				userId = jsonIsId.id;
-				console.log(userId);
+				// console.log(userId);
 				const isPlaylist = await fetch(
 					`https://api.spotify.com/v1/users/${userId}/playlists`,
 					{
