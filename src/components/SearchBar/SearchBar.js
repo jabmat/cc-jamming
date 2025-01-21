@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
+import styles from './SearchBar.module.css';
+
 const SearchBar = ({ updateSearchResults }) => {
 	const [query, setQuery] = useState('initial empty');
 
@@ -18,14 +20,13 @@ const SearchBar = ({ updateSearchResults }) => {
 
 	return (
 		<>
-			<div className="searchbar">
-				<p>SearchBar:</p>
+			<div className={styles.searchbar}>
 				<input
 					id="search-placeholder"
 					placeholder="Song, Buddy?"
 					onChange={handleQueryTyping}
 				/>
-				<button className="search-button" onClick={handleSearch}>
+				<button className={styles.searchButton} onClick={handleSearch}>
 					Search
 				</button>
 			</div>
