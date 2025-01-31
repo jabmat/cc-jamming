@@ -12,17 +12,37 @@
 	word-spacing: 0.1em;
 	margin-top: 10px;
 	display: block;
+	border-top: 1px dashed #808080;
+}
+
+.saveSection {
+	font-family: 'Indie Flower', serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 1.5em;
+	letter-spacing: 0.04em;
+	word-spacing: 0.1em;
+	margin-top: 10px;
+    margin-bottom: 10px;
+	display: block;
+	text-decoration: underline;
+    /* text-align: center; */
 }
 
 .saveWrapper {
 	display: flex;
 	justify-content: center;
-	gap: 5px;
+	gap: 10px;
 	width: calc(100% - 100px);
 	margin: 0 auto;
 }
 
-@media (max-width: 1000px) {
+.saveButton {
+	padding: 5px 12px;
+}
+
+@media (max-width: 600px) {
 	.saveWrapper {
 		flex-direction: column;
 	}

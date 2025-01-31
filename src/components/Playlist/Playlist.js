@@ -18,6 +18,13 @@ const Playlist = ({
 		[onChangePlaylistName]
 	);
 
+	// add function to execute button by pressing a 'enter' key on keyboard
+	const enterHandler = (event) => {
+		if (event.key === 'Enter') {
+			onSave();
+		}
+	};
+
 	return (
 		<>
 			<div className={styles.playlist}>
@@ -29,6 +36,7 @@ const Playlist = ({
 					canRemove={true}
 					onRemove={onRemove}
 				/>
+				<span className={styles.saveSection}>Save & add playlist* to your spotify:</span>
 				<div className={styles.saveWrapper}>
 					<input
 						type="text"
@@ -37,14 +45,15 @@ const Playlist = ({
 						onChange={handleChangePlaylistName}
 						// defaultValue={'Name your playlist'}
 						placeholder="Name playlist, Buddy?"
+						onKeyDown={(e) => enterHandler(e)}
 					/>
-					<button className="playlist-save-button" onClick={onSave}>
+					<button className={styles.saveButton} onClick={onSave}>
 						save '{namePlaylist}' as playlist
 					</button>
 				</div>
 				<span className={styles.playlistInfo}>
-					How to: search for tracks, add to playlist, then name it and save
-					directly to you spotify account, {userName}! &#128521;
+					<strong>*How to:</strong> search for tracks, add to playlist, then name
+					it and save directly to you spotify account, {userName}! &#128521;
 				</span>
 			</div>
 		</>

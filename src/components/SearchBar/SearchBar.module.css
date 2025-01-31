@@ -1,6 +1,13 @@
 .searchbar {
-    display: flex;
-    margin: 10px 0;
-    gap: 5px;
+	display: flex;
+	margin: 10px 0;
+	gap: 10px;
 }
 
+.searchButton {
+	padding: 5px 12px;
+}
+
+#searchInput {
+    width: 100px;
+}
