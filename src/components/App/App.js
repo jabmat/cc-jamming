@@ -82,6 +82,7 @@ const App = () => {
 			setNamePlaylist('');
 			setTracksPlaylist([]);
 		});
+		window.alert('Playlist successfully saved!');
 	}, [namePlaylist, tracksPlaylist]);
 
 	// log in logic - condtional rendering INSIGE return - fix?
@@ -98,14 +99,26 @@ const App = () => {
 		return (
 			<div className={styles.app}>
 				<header>
-					<h1>Songstellar</h1>
+					<a href="" className={styles.home}>
+						<h1>Songstellar</h1>
+					</a>
 				</header>
 				<main className={styles.logWrapper}>
-					<button onClick={logInHandler}>Log in to Spotify</button>
+					<button className={styles.logInButton} onClick={logInHandler}>
+						Log in to Spotify
+					</button>
 				</main>
 				<footer>
 					<div className={styles.creditsWrapper}>
-						<span>by INKN Software</span>
+						<a href="https://github.com/jabmat" target="_blank">
+							github.com/jabmat
+						</a>
+						<span className={styles.rights}>
+							<a href="https://inkn.pl/" target="_blank">
+								INKN Software{' '}
+							</a>
+							&copy;{new Date().getFullYear()}
+						</span>
 					</div>
 				</footer>
 			</div>
@@ -114,7 +127,9 @@ const App = () => {
 		return (
 			<div className={styles.app}>
 				<header>
-					<h1>Songstellar</h1>
+					<a href="" className={styles.home}>
+						<h1>Songstellar</h1>
+					</a>
 				</header>
 				<main>
 					<h2>Spotify's Tracks Searcher</h2>
@@ -143,7 +158,15 @@ const App = () => {
 				</main>
 				<footer>
 					<div className={styles.creditsWrapper}>
-						<span>by INKN Software</span>
+						<a href="https://github.com/jabmat" target="_blank">
+							github.com/jabmat
+						</a>
+						<span className={styles.rights}>
+							<a href="https://inkn.pl/" target="_blank">
+								INKN Software{' '}
+							</a>
+							&copy;{new Date().getFullYear()}
+						</span>
 					</div>
 				</footer>
 			</div>

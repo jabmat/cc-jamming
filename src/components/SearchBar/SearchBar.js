@@ -16,15 +16,24 @@ const SearchBar = ({ updateSearchResults }) => {
 		updateSearchResults(query);
 	}, [updateSearchResults, query]);
 
+	// add function to execute button by pressing a 'enter' key on keyboard
+	const enterHandler = (event) => {
+		if (event.key === 'Enter') {
+			handleSearch();
+		}
+	};
+
 	// console.log(query);
 
 	return (
 		<>
 			<div className={styles.searchbar}>
 				<input
-					id="search-placeholder"
+					// id="search-placeholder"
+					id={styles.searchInput}
 					placeholder="Song, Buddy?"
 					onChange={handleQueryTyping}
+					onKeyDown={(e) => enterHandler(e)}
 				/>
 				<button className={styles.searchButton} onClick={handleSearch}>
 					Search
