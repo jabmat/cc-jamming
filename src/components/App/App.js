@@ -82,7 +82,6 @@ const App = () => {
 			setNamePlaylist('');
 			setTracksPlaylist([]);
 		});
-		window.alert('Playlist successfully saved!');
 	}, [namePlaylist, tracksPlaylist]);
 
 	// log in logic - condtional rendering INSIGE return - fix?
