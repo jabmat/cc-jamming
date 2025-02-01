@@ -1,5 +1,5 @@
 const clientId = '9a827a8c9e9c473fa9e190683328b77a';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://jabmat.github.io/cc-jamming/';
 let accessToken;
 
 // const { Buffer } = require('node:buffer');
